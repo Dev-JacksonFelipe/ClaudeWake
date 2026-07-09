@@ -6,8 +6,18 @@ ClaudeWake is a tiny self-hosted web app that sends a scheduled message to Claud
 
 > **Single-user by design.** Each person runs their own instance with their own Claude token. Nothing is shared, and no one else's credentials ever touch your deployment.
 
-<!-- TODO: add a screenshot of the dashboard and a GIF of the animated login here -->
-<!-- ![Dashboard](docs/dashboard.png) -->
+<p align="center">
+  <img src="docs/login.gif" alt="ClaudeWake — animated login screen" width="760" />
+</p>
+
+<p align="center">
+  <img src="docs/dashboard.png" alt="ClaudeWake dashboard" width="760" />
+</p>
+
+<p align="center">
+  <img src="docs/schedule.png" alt="Schedule editor" width="380" />
+  <img src="docs/history.png" alt="Run history" width="380" />
+</p>
 
 ---
 
