@@ -1,6 +1,7 @@
 import Link from "next/link";
 import LogoutButton from "@/components/LogoutButton";
 import DashboardPanel from "@/components/DashboardPanel";
+import ScheduleSummaryCard from "@/components/ScheduleSummaryCard";
 
 export default function Home() {
   return (
@@ -32,9 +33,6 @@ export default function Home() {
       <main className="mx-auto flex max-w-4xl flex-col gap-10 px-6 pb-20 pt-12">
         {/* Hero */}
         <section className="flex flex-col items-center gap-4 text-center">
-          <span className="inline-flex items-center rounded-full border border-orange-500/40 bg-orange-500/10 px-4 py-1 text-sm font-medium text-orange-300">
-            Nível 6 — agendamento automático ✅
-          </span>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             ClaudeWake
           </h1>
@@ -47,7 +45,7 @@ export default function Home() {
 
         {/* Destaques */}
         <section className="grid gap-4 sm:grid-cols-3">
-          <StatCard icon="🕕" title="6h e 14h" subtitle="horários editáveis" />
+          <ScheduleSummaryCard />
           <StatCard icon="☁️" title="Na nuvem" subtitle="PC pode ficar desligado" />
           <StatCard icon="🔑" title="Sua assinatura" subtitle="usa seu login do Claude" />
         </section>
