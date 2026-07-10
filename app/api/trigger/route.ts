@@ -61,6 +61,8 @@ export async function POST(request: NextRequest) {
     model: result.model,
     reply: result.reply,
     error: result.error,
+    tokensIn: result.tokensIn,
+    tokensOut: result.tokensOut,
   });
 
   if (!result.ok) {

@@ -9,15 +9,21 @@
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 
-// Modelo usado para o "ping" de ativação. Haiku é o mais econômico em cota;
-// como a mensagem é mínima, o consumo é irrelevante. Pode ser trocado via env.
+// Modelo usado para o "ping" de ativação. Haiku é o mais econômico em cota.
+// Pode ser trocado via env CLAUDE_MODEL (ex.: "claude-opus-4-8").
 const DEFAULT_MODEL = process.env.CLAUDE_MODEL || "claude-haiku-4-5";
+
+// Tamanho da resposta do ping. Mantido mínimo de propósito: o objetivo é
+// apenas iniciar a janela de 5h gastando o mínimo possível da sua cota.
+const MAX_TOKENS = Number(process.env.CLAUDE_MAX_TOKENS) || 32;
 
 export interface ActivationResult {
   ok: boolean;
   model?: string;
   reply?: string;
   error?: string;
+  tokensIn?: number;
+  tokensOut?: number;
 }
 
 export async function activateWindow(
@@ -35,7 +41,7 @@ export async function activateWindow(
       },
       body: JSON.stringify({
         model: DEFAULT_MODEL,
-        max_tokens: 32,
+        max_tokens: MAX_TOKENS,
         system: "You are Claude Code, Anthropic's official CLI for Claude.",
         messages: [{ role: "user", content: message }],
       }),
@@ -62,6 +68,8 @@ export async function activateWindow(
       ok: true,
       model: data?.model || DEFAULT_MODEL,
       reply: reply || "(resposta sem texto)",
+      tokensIn: data?.usage?.input_tokens,
+      tokensOut: data?.usage?.output_tokens,
     };
   } catch (err) {
     return {

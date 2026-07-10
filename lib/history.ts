@@ -13,6 +13,8 @@ export interface HistoryEntry {
   model?: string;
   reply?: string;
   error?: string;
+  tokensIn?: number;
+  tokensOut?: number;
 }
 
 export async function addHistory(entry: HistoryEntry): Promise<void> {

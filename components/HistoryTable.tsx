@@ -9,6 +9,8 @@ interface HistoryEntry {
   model?: string;
   reply?: string;
   error?: string;
+  tokensIn?: number;
+  tokensOut?: number;
 }
 
 function formatDate(iso: string): string {
@@ -73,6 +75,7 @@ export default function HistoryTable({ reloadKey }: { reloadKey?: number }) {
                 <th className="px-4 py-2 font-medium">Quando</th>
                 <th className="px-4 py-2 font-medium">Origem</th>
                 <th className="px-4 py-2 font-medium">Status</th>
+                <th className="px-4 py-2 font-medium">Tokens</th>
                 <th className="px-4 py-2 font-medium">Detalhe</th>
               </tr>
             </thead>
@@ -94,6 +97,21 @@ export default function HistoryTable({ reloadKey }: { reloadKey?: number }) {
                       <span className="rounded-full bg-red-500/15 px-2 py-0.5 text-xs text-red-400">
                         ✕ erro
                       </span>
+                    )}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    {e.ok && (e.tokensIn != null || e.tokensOut != null) ? (
+                      <span
+                        className="font-mono text-xs text-neutral-400"
+                        title={`${e.tokensIn ?? 0} de entrada + ${e.tokensOut ?? 0} de saída`}
+                      >
+                        {(e.tokensIn ?? 0) + (e.tokensOut ?? 0)}{" "}
+                        <span className="text-neutral-600">
+                          ({e.tokensIn ?? 0}+{e.tokensOut ?? 0})
+                        </span>
+                      </span>
+                    ) : (
+                      <span className="text-neutral-600">—</span>
                     )}
                   </td>
                   <td className="max-w-xs px-4 py-2 text-neutral-400">
