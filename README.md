@@ -134,6 +134,10 @@ Open http://localhost:3000.
 
 This project automates sending a message to Claude with **your own** account token on a schedule. You are responsible for using it in accordance with [Anthropic's Terms of Service and Usage Policies](https://www.anthropic.com/legal). It is provided "as is", without warranty of any kind (see [LICENSE](LICENSE)). Never deploy an instance that stores anyone's token but your own.
 
+## 👤 Author
+
+**Jackson Felipe** — [LinkedIn](https://www.linkedin.com/in/jackson-felipe-351a93301)
+
 ## 📄 License
 
 [MIT](LICENSE) © Jackson Felipe
